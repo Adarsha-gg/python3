@@ -65,7 +65,7 @@ display = []
 
 for i in range(g):
     display +="_"
-
+print(display)
 while(lives != 0 or win == False):
     guess = input("Enter ur guess: ").lower()
     for position in range(g):   
@@ -82,5 +82,5 @@ while(lives != 0 or win == False):
     print(f"{' '.join(display)}")
     if"_" not in display:
         win = True
-        print("Yoou win")
+        print("You win")
     print(stages[lives])
