@@ -81,9 +81,9 @@ def drink():
 
 def coins(price):
     print("PLEASE ENTER COINS \n")
-    quat = int(input("How many quaters?")) * 0.25
-    dimes = int(input("How many dimes?")) * 0.05
+    quat = int(input("How many quarters?")) * 0.25
     nickels = int(input("How many nickels?")) *0.10
+    dimes = int(input("How many dimes?")) * 0.05
     pennies = int(input("How many pennies?")) * 0.01
     total = quat + dimes + nickels + pennies
     if (total >= price):
@@ -98,10 +98,14 @@ while yn == True:
     choice = input("What would you like? (espresso/latte/cappuccino): ")
     if (choice == "report"):
         report()
-    else:
+        use = input("Would u like a drink: (y/n)").lower()    
+    elif choice == "espresso" or choice == "latte" or choice == "cappuccino":
         price_g = costt(choice)
-        coins(price_g)    
-    use = input("Would u like another drink: (y/n)").lower()            
+        coins(price_g)  
+        use = input("Would u like another drink: (y/n)").lower()      
+    else:
+        print("Enter a valid command")    
+            
     if  use == "y":
         yn = True
     elif use == "n":
