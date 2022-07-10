@@ -26,7 +26,7 @@ MENU = {
 }
 
 resources = {
-    "water": 00,
+    "water": 200,
     "milk": 200,
     "coffee": 100,
     "money":0
@@ -36,20 +36,29 @@ def report():
         print(f"Milk: {resources['milk']}ml\n Water: {resources['water']}ml\n Milk: {resources['coffee']}gm\n")
 
 def sufficient():
-    if(resources['milk'] >= MENU[choice]["ingredients"]['milk']):
-        resources['milk'] - MENU[choice]["ingredients"]['milk']
-    elif resources['milk'] < MENU[choice]["ingredients"]['milk']:
-        print("Sorry there is not enough milk")
-
-    if(resources['coffee'] >= MENU[choice]["ingredients"]['coffee']):
-       resources['coffee'] - MENU[choice]["ingredients"]['coffee']
+    milk =MENU[choice]["ingredients"]['milk']
+    coffee = MENU[choice]["ingredients"]['coffee']
+    water = MENU[choice]["ingredients"]['water']
+    if(resources['milk'] >= milk):
+        resources['milk'] -= milk
+        return True
     else:
         print("Sorry there is not enough milk")
+        return False
 
-    if(resources['water'] >= MENU[choice]["ingredients"]['water']):
-       resources['water'] >= MENU[choice]["ingredients"]['water']
+    if resources['coffee'] >= coffee:
+       resources['coffee'] -= coffee
+       return True
     else:
-        print("Sorry there is not enough milk")
+        print("Sorry there is not enough coffee")
+        return False
+
+    if(resources['water'] >= water):
+       resources['water'] -= water
+       return True
+    else:
+        print("Sorry there is not enough water")
+        return False
 
 def costt(choice):
     if(choice == "espresso"):
@@ -71,6 +80,7 @@ def drink():
             print("Here is your cappuccino")
 
 def coins(price):
+    print("PLEASE ENTER COINS \n")
     quat = int(input("How many quaters?")) * 0.25
     dimes = int(input("How many dimes?")) * 0.05
     nickels = int(input("How many nickels?")) *0.10
@@ -87,11 +97,15 @@ def coins(price):
 while yn == True:
     choice = input("What would you like? (espresso/latte/cappuccino): ")
     if (choice == "report"):
-        report(choice)
+        report()
     else:
         price_g = costt(choice)
-        coins(price_g)            
-    if input("Would u like another drink: ").lower() == "y":
+        coins(price_g)    
+    use = input("Would u like another drink: (y/n)").lower()            
+    if  use == "y":
         yn = True
+    elif use == "n":
+        print("Thanks for using our machine")
+        yn = False
     else:
-        yn = False    
+        print("Please enter a valid command")        
