@@ -24,6 +24,7 @@ def easy():
             if(lives == 0):
                 print("Ran out of guesses, You lose.")
                 over = True
+                print(f"The number was {number}")    
 
 def hard():
     lives = 5
@@ -44,6 +45,7 @@ def hard():
             if(lives == 0):
                 print("Ran out of guesses, You lose.")
                 over = True
+                print(f"The number was {number}")
 
 def play():
     c = input("Choose a difficulty, easy or hard : ").lower()

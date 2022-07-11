@@ -57,7 +57,7 @@ stages = ['''
 =========
 ''']
 win = False
-word = ["aardvark", "baboon", "camel"]
+word = ["aardvark", "baboon", "camel","rahul"]
 main = random.choice(word)
 lives =6
 g = len(main)
@@ -78,9 +78,11 @@ while(lives != 0 or win == False):
         if lives == 0:
             win = True
             print("You lose")
+            print(f"The word was {main}")
             
     print(f"{' '.join(display)}")
     if"_" not in display:
         win = True
         print("You win")
+        print(f"The word was {main}")
     print(stages[lives])

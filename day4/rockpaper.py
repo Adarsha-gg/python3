@@ -27,7 +27,7 @@ scissors = '''
 '''
 
 #Write your code below this line 👇
-intt =random.randint(0,3)
+intt =random.randint(0,2)
 choice =int(input("0 for rock,1 for paper,2 for scissors: "))
 print(f"you chose {choice}")
 if(choice == 0):
