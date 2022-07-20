@@ -6,13 +6,13 @@ tim.shape("arrow")
 tim.color("black")
 colours = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen", "wheat", "SlateGray", "SeaGreen"]
 move =[90,180,270,360]
-tim.speed("fastest")
+tim.speed("fast")
 tim.pensize(5)
 
 def movee():
     g = random.choice(move)
     tim.left(g)
-    tim.forward(15)
+    tim.forward(40)
     tim.color(random.choice(colours))
 
 while stop != True:
