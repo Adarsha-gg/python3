@@ -5,6 +5,7 @@ import random
 tim = Turtle()
 tim.shape("arrow")
 tim.color("black")
+tim.speed("fastest")
 sides = 3
 while sides < 10:
     r = random.randint(1,255)
