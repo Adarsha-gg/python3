@@ -16,12 +16,18 @@ class Snake:
 
     def create_snake(self):
         for position in POSITIONS:
-            tim = t.Turtle(shape="square")
-            tim.color("white")
-            tim.penup()
-            tim.goto(position)
-            self.squares.append(tim)
+            self.addsquares(position)
+
+    def extend(self):
+        self.addsquares(self.squares[-1].position())
         
+    def addsquares(self,position):
+        tim = t.Turtle(shape="square")
+        tim.color("white")
+        tim.penup()
+        tim.goto(position)
+        self.squares.append(tim)
+
     def move(self):            
         for num in range(len(self.squares)-1, 0, -1):
             new_x =self.squares[num-1] .xcor()
