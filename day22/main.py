@@ -23,8 +23,6 @@ screen.onkey(key = "Down", fun = r_paddle.down)
 screen.onkey(key = "w", fun = l_paddle.up)
 screen.onkey(key = "s", fun = l_paddle.down)
 
-
-
 while game_on:
     time.sleep(ball.speed)
     screen.update()
@@ -39,7 +37,7 @@ while game_on:
     if ball.distance(r_paddle) < 40 and ball.xcor() > 340:
         ball.collidepaddle()
         ball.hard()
-        
+
     #detect collision with right paddle
     if ball.distance(l_paddle) < 40 and ball.xcor() < -340:
         ball.collidepaddle()
@@ -54,11 +52,5 @@ while game_on:
     if ball.xcor() > 380:
         ball.reset()    
         scoreboard.l_add()
-
-
-
-
-
-
 
 screen.exitonclick()

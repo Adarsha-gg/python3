@@ -3,7 +3,6 @@ class Ball(turtle.Turtle):
 
     def __init__(self) -> None:
         super().__init__()
-
         self.shape("circle")
         self.shapesize(0.5,0.5)
         self.penup()
