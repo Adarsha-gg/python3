@@ -12,7 +12,7 @@ class Car(turtle.Turtle):
         self.car_speed = Move
 
     def generate(self):
-        random_chance = random.randint(1,6)
+        random_chance = random.randint(2,6)
         if random_chance == 6:
             new_car = turtle.Turtle("square")
             new_car.penup()
