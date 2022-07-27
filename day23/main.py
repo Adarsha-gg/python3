@@ -35,8 +35,8 @@ while Game_on:
 
     if player.is_at_finish_line():
         level.increase()    
-        car.increase()
-        player.goto(player.starting)
+        car.level_up()
+        player.go_to_start()
 
 
 screen.exitonclick()
