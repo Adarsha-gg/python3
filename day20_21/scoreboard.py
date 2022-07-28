@@ -1,10 +1,13 @@
 from turtle import Turtle
 ALIGN = "center"
+with open(r'D:\Code\python\day20_21\highscore.txt') as file:
+        content = int(file.read())
+        
 class Scoreboard(Turtle):
     def __init__(self) -> None:
         super().__init__()
         self.score = 0
-        self.high_score = 0
+        self.high_score = content
         self.hideturtle()
         self.penup()
         self.color("White")
@@ -22,9 +25,13 @@ class Scoreboard(Turtle):
 
     def reset(self):
         if self.score > self.high_score:
-            self.high_score = self.score 
+            self.high_score = self.score
+            with open(r'D:\Code\python\day20_21\highscore.txt','w') as file:
+                file.write(f"{self.high_score}")
         self.score = 0
-        self.update()       
+        self.update()
+        
+       
         
     #def over(self):
         #self.goto(0,0)
