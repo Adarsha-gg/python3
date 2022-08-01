@@ -1,3 +1,4 @@
+from email.errors import MissingHeaderBodySeparatorDefect
 import turtle
 import pandas
 
@@ -8,8 +9,33 @@ screen.addshape(image)
 
 turtle.shape(image)
 
+data = pandas.read_csv("day25/all_states.csv")
+total_states = data.state.to_list()
+guessed_states = []
 
-ans = screen.textinput(title="Guess the state",prompt="What is the name of the state")
+while len(guessed_states) < 50:
+    ans = screen.textinput(title="Guess the state",prompt="What is the name of the state").title()
+
+    if ans == "Exit":
+        missing = []
+        for state  in total_states:
+            if state not in guessed_states:
+                missing.append(state)
+        new = pandas.DataFrame(missing)
+        new.to_csv("day25/Missed")        
+
+        break 
+
+    if ans in total_states:
+        hero = data[data.state == ans]
+        
+        tim = turtle.Turtle()
+        tim.hideturtle()
+        tim.penup()
+        tim.goto(int(hero.x),int(hero.y))
+        tim.write(ans)
+        guessed_states.append(hero)
 
 
 
+ 
