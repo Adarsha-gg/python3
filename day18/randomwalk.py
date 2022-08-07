@@ -7,7 +7,7 @@ tim.color("black")
 
 move =[90,180,270,360]
 tim.speed("fast")
-tim.pensize(13)
+tim.pensize(8)
 t.colormode(255)
 def rcolor():
     r = random.randint(1,255)
@@ -20,7 +20,7 @@ def movee():
     g = random.choice(move)
     ez = rcolor()
     tim.left(g)
-    tim.forward(40)
+    tim.forward(20)
     tim.color(ez)
 
 while stop != True:
