@@ -3,6 +3,7 @@ import random
 from tkinter import *
 from tkinter import messagebox
 import pyperclip
+import json
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 #Password Generator Project
 def generate():
@@ -32,16 +33,46 @@ def add():
     website = website_entry.get()
     email = email_entry.get()
     password = pass_entry.get()
+    new_data = {
+        website: {
+        "email":email,
+        "password":password
+        } 
+    }
+  
     if website == "" or password == "":
         messagebox.showinfo(title="STOP",message="Dont leave the fields empty")
     else:
-        ok = messagebox.askokcancel(title= website , message= f"These are the details: \n Email:{email} \n Password:{password} \n") 
-        if ok:
-            with open('day29\data.txt','a') as file:
-                file.write(f'{website} | {email} | {password} \n')
-                website_entry.delete(0,END)
-                pass_entry.delete(0,END)
+        try:
+            with open('day29\data.json','r') as file:
+                #read old data
+                data = json.load(file)               
+        except FileNotFoundError:
+            with open('day29\data.json','w') as file:
+                json.dump(new_data, file,indent=4)
+        else: #updated data
+            data.update(new_data)
+            with open('day29\data.json','w') as file:
+                json.dump(new_data, file,indent=4)
+        finally:         
+            website_entry.delete(0,END)
+            pass_entry.delete(0,END)
 
+def search():
+    website = website_entry.get()
+    try:
+        with open("day29\data.json","r") as file:
+            data = json.load(file)
+    except FileNotFoundError:
+        messagebox.showinfo(title="Details",message=" NO SUCH FILE FOUND")
+    else: 
+        if website in data:
+            email = data[website]["email"]
+            password = data[website]["password"]
+            messagebox.showinfo(title="Details",message=data[website])
+        else:
+             messagebox.showinfo(title="Details",message="No details")      
+      
 # ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk()
@@ -67,9 +98,11 @@ pass_label.grid(row = 3, column = 0)
 generate_button = Button(text="Generate Password",command=generate)
 generate_button.grid(row=3,column=2)
 
-
 add_button = Button(text= "Add",width=36,command=add)
 add_button.grid(row=4,column=1,columnspan=2)
+
+search_button = Button(text="Search",width=10,command=search)
+search_button.grid(row=1,column=3)
 
 #entry
 website_entry = Entry(width=35)
