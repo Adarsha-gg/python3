@@ -82,7 +82,7 @@ window.config(padx=20,pady=20)
 canvas = Canvas(width=200,height=200)
 photo = PhotoImage(file="day29\logo.png")
 canvas.create_image(100,100,image = photo)
-canvas.grid(column=1,row=0)
+
 
 #labels
 website_label = Label(text = "Website:")
