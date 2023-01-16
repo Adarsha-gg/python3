@@ -4,23 +4,18 @@ stop = False
 tim = t.Turtle()
 tim.shape("arrow")
 tim.color("black")
+tim.speed(10)
 
 move =[90,180,270,360]
 tim.speed("fast")
 tim.pensize(8)
-t.colormode(255)
-def rcolor():
-    r = random.randint(1,255)
-    g = random.randint(1,255)
-    b = random.randint(1,255)
-    color = (r, g, b)
-    return color
+
 
 def movee():
     g = random.choice(move)
     ez = rcolor()
     tim.left(g)
-    tim.forward(20)
+    tim.forward(40)
     tim.color(ez)
 
 while stop != True:

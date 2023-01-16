@@ -21,7 +21,6 @@ class Scoreboard(turtle.Turtle):
     def l_add(self):
         self.l_score +=1
         self.update()
-        
 
     def r_add(self):
         self.r_score +=1    
